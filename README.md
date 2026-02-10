@@ -499,13 +499,8 @@ All API endpoint tests have been documented with screenshots in the `images/` fo
 
 ## Author
 
-Student ID: [Your Student ID]
+Student ID: 26937
 
-## Submission
-
-Branch name: `restFull_api_StudentId`
-
----
 
 ## Notes
 
