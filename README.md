@@ -26,6 +26,14 @@ src/main/java/com/auca/restfulapi/
     ├── model/UserProfile.java
     ├── model/ApiResponse.java
     └── controller/UserProfileController.java
+
+images/ (Test Screenshots)
+├── Q1_*.png (Library API tests)
+├── Q2_*.png (Student API tests)
+├── Q3_*.png (Restaurant Menu API tests)
+├── Q4_*.png (E-Commerce Product API tests)
+├── Q5_*.png (Task Management API tests)
+└── Bonus_*.png (User Profile API tests)
 ```
 
 ## How to Run
@@ -383,10 +391,53 @@ src/main/java/com/auca/restfulapi/
 
 ## Testing with Postman
 
-1. **Import Collection:** Create a new collection in Postman
+1. **Import Collection:** Import `Postman_Collection.json` file
 2. **Set Base URL:** `http://localhost:8080`
 3. **Test each endpoint** following the examples above
 4. **Check Status Codes:** Verify proper HTTP status codes (200, 201, 204, 404)
+5. **Screenshots:** All test screenshots are saved in the `images/` folder
+
+### Test Screenshots
+
+All API endpoint tests have been documented with screenshots in the `images/` folder:
+
+**Question 1 - Library API:**
+- `Q1_GetAllBooks.png` - Get all books endpoint
+- `Q1_GetBookById.png` - Get book by ID
+- `Q1_SearchBooks.png` - Search books by title
+- `Q1_AddBook.png` - Add new book
+- `Q1_DeleteBook.png` - Delete book
+
+**Question 2 - Student API:**
+- `Q2_GetAllStudents.png` - Get all students
+- `Q2_GetByMajor.png` - Filter by major
+- `Q2_FilterByGPA.png` - Filter by GPA
+- `Q2_RegisterStudent.png` - Register new student
+
+**Question 3 - Restaurant Menu API:**
+- `Q3_GetAllMenuItems.png` - Get all menu items
+- `Q3_GetByCategory.png` - Filter by category
+- `Q3_GetAvailable.png` - Get available items
+
+**Question 4 - E-Commerce Product API:**
+- `Q4_GetAllProducts.png` - Get all products
+- `Q4_Pagination.png` - Pagination test
+- `Q4_SearchProducts.png` - Search products
+- `Q4_PriceRange.png` - Price range filter
+- `Q4_InStock.png` - In-stock products
+
+**Question 5 - Task Management API:**
+- `Q5_GetAllTasks.png` - Get all tasks
+- `Q5_GetByStatus.png` - Filter by status
+- `Q5_GetByPriority.png` - Filter by priority
+- `Q5_MarkCompleted.png` - Mark task as completed
+
+**Bonus - User Profile API:**
+- `Bonus_GetAllUsers.png` - Get all users with ApiResponse wrapper
+- `Bonus_GetByCountry.png` - Filter by country
+- `Bonus_AgeRange.png` - Filter by age range
+- `Bonus_CreateUser.png` - Create new user
+- `Bonus_ActivateUser.png` - Activate user
 
 ### Sample Test Scenarios
 
@@ -462,3 +513,5 @@ Branch name: `restFull_api_StudentId`
 - Data will be reset when the application restarts
 - No database or service layer is used (as per requirements)
 - All endpoints have been tested and work correctly
+- Test screenshots are available in the `images/` folder
+- Import `Postman_Collection.json` for quick testing
