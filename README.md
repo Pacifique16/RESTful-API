@@ -448,13 +448,8 @@ src/main/java/com/auca/restfulapi/
 
 ## Author
 
-Student ID: [Your Student ID]
+Student ID: 26937
 
-## Submission
-
-Branch name: `restFull_api_StudentId`
-
----
 
 ## Notes
 
