@@ -1,12 +1,19 @@
 package com.auca.restfulapi.user.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "user_profiles")
 public class UserProfile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
     private String username;
     private String email;
     private String fullName;
     private int age;
     private String country;
+    @Column(length = 500)
     private String bio;
     private boolean active;
 
