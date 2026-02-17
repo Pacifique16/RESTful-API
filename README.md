@@ -152,23 +152,41 @@ http://localhost:8080/api/products/1
 
 ## API Screenshots
 
-### Get All Products
-![Get All Products](images/Q4_GetAllProducts.png)
+### 1. Get All Products
+![Get All Products](images/getall%20products.png)
 
-### Get Products with Pagination
-![Pagination](images/Q4_Pagination.png)
+### 2. Get Products with Pagination
+![Get Products with Pagination](images/get%20products%20with%20pagination.png)
 
-### Search Products by Keyword
-![Search Products](images/Q4_SearchProducts.png)
+### 3. Get Product by ID
+![Get Product by ID](images/get%20product%20by%20ID.png)
 
-### Get Products by Price Range
-![Price Range](images/Q4_PriceRange.png)
+### 4. Get Products by Category
+![Get Products by Category](images/get%20product%20by%20category.png)
 
-### Get In-Stock Products
-![In-Stock Products](images/Q4_InStock.png)
+### 5. Get Products by Brand
+![Get Products by Brand](images/get%20product%20by%20brand.png)
 
-### Get Products by Category
-![Get By Category](images/Q3_GetByCategory.png)
+### 6. Search Products by Keyword
+![Search Products by Keyword](images/search%20product%20by%20keyword.png)
+
+### 7. Get Products by Price Range
+![Get Products by Price Range](images/get%20product%20by%20price%20range%20min=10%20max=20.png)
+
+### 8. Get In-Stock Products
+![Get In-Stock Products](images/get%20in-stock%20products.png)
+
+### 9. Add New Product
+![Add New Product](images/add%20new%20product.png)
+
+### 10. Update Product
+![Update Product](images/update%20product.png)
+
+### 11. Update Stock Quantity
+![Update Stock Quantity](images/update%20stock%20quantity.png)
+
+### 12. Delete Product
+![Delete Product](images/delete%20product.png)
 
 ## Testing with Postman
 
