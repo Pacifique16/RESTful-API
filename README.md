@@ -188,8 +188,9 @@ http://localhost:8080/api/products/1
 ### 12. Delete Product
 ![Delete Product](images/delete%20product.png)
 
-## Testing with Postman
+## API Screenshots
 
+<<<<<<< HEAD
 ### Example: Add a Product
 
 1. Set method to **POST**
@@ -219,6 +220,11 @@ http://localhost:8080/api/products/1
 1. Set method to **GET**
 2. URL: `http://localhost:8080/api/products/price-range?min=500&max=1000`
 3. Click **Send**
+=======
+For all screen shots, check folder `images`
+
+
+>>>>>>> abe77a2d4f4aaf61e3a9d1163053dd144a37be5d
 
 ## HTTP Status Codes
 
