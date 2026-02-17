@@ -324,6 +324,24 @@
           }
         },
         {
+          "name": "Get by Price and Brand",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/products/filter?price=999.99&brand=Apple",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "products", "filter"],
+              "query": [
+                {"key": "price", "value": "999.99"},
+                {"key": "brand", "value": "Apple"}
+              ]
+            }
+          }
+        },
+        {
           "name": "Add New Product",
           "request": {
             "method": "POST",
