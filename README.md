@@ -5,7 +5,7 @@ A RESTful API built with Spring Boot for managing e-commerce products with Postg
 ## Features
 
 - Complete CRUD operations for products
-- Search and filter products by category, brand, price range, and price with brand combination
+- Search and filter products by category, brand, price range
 - Pagination support
 - Stock management
 - Duplicate product validation
@@ -96,15 +96,7 @@ http://localhost:8080/api/products/price-range?min=100&max=500
 http://localhost:8080/api/products/in-stock
 ```
 
-### 9. Get Products by Price and Brand
-**GET** `/api/products/filter?price={price}&brand={brand}`
-```
-http://localhost:8080/api/products/filter?price=999.99&brand=Apple
-```
-
-**Response:** `200 OK`
-
-### 10. Add New Product
+### 9. Add New Product
 **POST** `/api/products`
 
 **Headers:** `Content-Type: application/json`
@@ -123,26 +115,7 @@ http://localhost:8080/api/products/filter?price=999.99&brand=Apple
 
 **Response:** `201 Created`
 
-### 10. Add New Product
-**POST** `/api/products`
-
-**Headers:** `Content-Type: application/json`
-
-**Body:**
-```json
-{
-  "name": "iPhone 15",
-  "description": "Latest Apple smartphone",
-  "price": 999.99,
-  "category": "Electronics",
-  "stockQuantity": 50,
-  "brand": "Apple"
-}
-```
-
-**Response:** `201 Created`
-
-### 11. Update Product
+### 10. Update Product
 **PUT** `/api/products/{id}`
 
 **Headers:** `Content-Type: application/json`
@@ -161,7 +134,7 @@ http://localhost:8080/api/products/filter?price=999.99&brand=Apple
 
 **Response:** `200 OK` or `404 Not Found`
 
-### 12. Update Stock Quantity
+### 11. Update Stock Quantity
 **PATCH** `/api/products/{id}/stock?quantity={quantity}`
 ```
 http://localhost:8080/api/products/1/stock?quantity=100
@@ -169,7 +142,7 @@ http://localhost:8080/api/products/1/stock?quantity=100
 
 **Response:** `200 OK` or `404 Not Found`
 
-### 13. Delete Product
+### 12. Delete Product
 **DELETE** `/api/products/{id}`
 ```
 http://localhost:8080/api/products/1
@@ -268,8 +241,6 @@ src/main/java/com/auca/restfulapi/
 └── ecommerce/
     ├── model/
     │   └── Product.java
-    ├── service/
-    │   └── ProductService.java
     ├── controller/
     │   └── ProductController.java
     └── repository/
