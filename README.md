@@ -53,50 +53,66 @@ Application runs on: `http://localhost:8080`
 ```
 http://localhost:8080/api/products
 ```
+<img width="1861" height="987" alt="getall products" src="https://github.com/user-attachments/assets/a3eeb7db-5561-45b2-be2d-dd8c5595fe51" />
 
 ### 2. Get Products with Pagination
 **GET** `/api/products?page={page}&limit={limit}`
 ```
 http://localhost:8080/api/products?page=0&limit=5
 ```
+<img width="1755" height="933" alt="get products with pagination" src="https://github.com/user-attachments/assets/e4425eed-14d7-4497-a514-3786cb08b8fa" />
 
 ### 3. Get Product by ID
 **GET** `/api/products/{id}`
 ```
-http://localhost:8080/api/products/1
+http://localhost:8080/api/products/2
 ```
+<img width="1751" height="802" alt="get product by ID" src="https://github.com/user-attachments/assets/4205a6e0-789c-45a6-af89-a219a678fd88" />
 
 ### 4. Get Products by Category
 **GET** `/api/products/category/{category}`
 ```
 http://localhost:8080/api/products/category/Electronics
 ```
+<img width="1742" height="938" alt="get product by category" src="https://github.com/user-attachments/assets/bb96535c-946b-4c18-9042-65eff19a311c" />
 
 ### 5. Get Products by Brand
 **GET** `/api/products/brand/{brand}`
 ```
 http://localhost:8080/api/products/brand/Apple
 ```
+<img width="1746" height="797" alt="get product by brand" src="https://github.com/user-attachments/assets/9ca12d5d-6d54-4689-8151-2f4a6cd41cc3" />
 
 ### 6. Search Products by Keyword
 **GET** `/api/products/search?keyword={keyword}`
 ```
 http://localhost:8080/api/products/search?keyword=phone
 ```
+<img width="1738" height="765" alt="search product by keyword" src="https://github.com/user-attachments/assets/084907b8-4347-4a1c-97cf-810132248897" />
 
 ### 7. Get Products by Price Range
 **GET** `/api/products/price-range?min={min}&max={max}`
 ```
 http://localhost:8080/api/products/price-range?min=100&max=500
 ```
+<img width="1752" height="763" alt="get product by price range min=10 max=20" src="https://github.com/user-attachments/assets/67834c39-99b1-4a69-b628-e91190421aa9" />
 
-### 8. Get In-Stock Products
+
+### 8. Get Products by BOTH Price Range and Brand
+**GET** `/api/products/filter?price={price}&brand={brand}`
+```
+min=100&max=500]http://localhost:8080/api/products/filter?price=999.99&brand=Apple
+```
+<img width="1757" height="856" alt="search both by price and brand" src="https://github.com/user-attachments/assets/5f93ce5c-6a39-4971-8c0d-2a90873a26fe" />
+
+### 9. Get In-Stock Products
 **GET** `/api/products/in-stock`
 ```
 http://localhost:8080/api/products/in-stock
 ```
+<img width="1765" height="896" alt="get in-stock products" src="https://github.com/user-attachments/assets/5d0aee03-083b-445d-a255-46988924be4f" />
 
-### 9. Add New Product
+### 10. Add New Product
 **POST** `/api/products`
 
 **Headers:** `Content-Type: application/json`
@@ -115,7 +131,9 @@ http://localhost:8080/api/products/in-stock
 
 **Response:** `201 Created`
 
-### 10. Update Product
+<img width="1748" height="767" alt="add new product" src="https://github.com/user-attachments/assets/25683e87-3c71-4362-968c-6e4a6f61cb43" />
+
+### 11. Update Product
 **PUT** `/api/products/{id}`
 
 **Headers:** `Content-Type: application/json`
@@ -134,7 +152,9 @@ http://localhost:8080/api/products/in-stock
 
 **Response:** `200 OK` or `404 Not Found`
 
-### 11. Update Stock Quantity
+<img width="1748" height="797" alt="update product" src="https://github.com/user-attachments/assets/8d76948a-955a-4b2c-aad5-e2ff4e2be320" />
+
+### 12. Update Stock Quantity
 **PATCH** `/api/products/{id}/stock?quantity={quantity}`
 ```
 http://localhost:8080/api/products/1/stock?quantity=100
@@ -142,7 +162,10 @@ http://localhost:8080/api/products/1/stock?quantity=100
 
 **Response:** `200 OK` or `404 Not Found`
 
-### 12. Delete Product
+<img width="1748" height="762" alt="update stock quantity" src="https://github.com/user-attachments/assets/c2143946-04e3-40cd-9528-0bd5032f67a7" />
+
+
+### 13. Delete Product
 **DELETE** `/api/products/{id}`
 ```
 http://localhost:8080/api/products/1
@@ -150,81 +173,9 @@ http://localhost:8080/api/products/1
 
 **Response:** `204 No Content` or `404 Not Found`
 
-## API Screenshots
-
-### 1. Get All Products
-![Get All Products](images/getall%20products.png)
-
-### 2. Get Products with Pagination
-![Get Products with Pagination](images/get%20products%20with%20pagination.png)
-
-### 3. Get Product by ID
-![Get Product by ID](images/get%20product%20by%20ID.png)
-
-### 4. Get Products by Category
-![Get Products by Category](images/get%20product%20by%20category.png)
-
-### 5. Get Products by Brand
-![Get Products by Brand](images/get%20product%20by%20brand.png)
-
-### 6. Search Products by Keyword
-![Search Products by Keyword](images/search%20product%20by%20keyword.png)
-
-### 7. Get Products by Price Range
-![Get Products by Price Range](images/get%20product%20by%20price%20range%20min=10%20max=20.png)
-
-### 8. Get In-Stock Products
-![Get In-Stock Products](images/get%20in-stock%20products.png)
-
-### 9. Add New Product
-![Add New Product](images/add%20new%20product.png)
-
-### 10. Update Product
-![Update Product](images/update%20product.png)
-
-### 11. Update Stock Quantity
-![Update Stock Quantity](images/update%20stock%20quantity.png)
-
-### 12. Delete Product
-![Delete Product](images/delete%20product.png)
-
-## API Screenshots
-
-<<<<<<< HEAD
-### Example: Add a Product
-
-1. Set method to **POST**
-2. URL: `http://localhost:8080/api/products`
-3. Headers: `Content-Type: application/json`
-4. Body (raw JSON):
-```json
-{
-  "name": "Samsung Galaxy S24",
-  "description": "Latest Samsung flagship phone",
-  "price": 899.99,
-  "category": "Electronics",
-  "stockQuantity": 30,
-  "brand": "Samsung"
-}
-```
-5. Click **Send**
-
-### Example: Search Products
-
-1. Set method to **GET**
-2. URL: `http://localhost:8080/api/products/search?keyword=samsung`
-3. Click **Send**
-
-### Example: Filter by Price Range
-
-1. Set method to **GET**
-2. URL: `http://localhost:8080/api/products/price-range?min=500&max=1000`
-3. Click **Send**
-=======
-For all screen shots, check folder `images`
+<img width="1762" height="743" alt="delete product" src="https://github.com/user-attachments/assets/b231ba27-9d5e-4f71-9ea8-2bf8f53645ea" />
 
 
->>>>>>> abe77a2d4f4aaf61e3a9d1163053dd144a37be5d
 
 ## HTTP Status Codes
 
@@ -243,8 +194,10 @@ src/main/java/com/auca/restfulapi/
     │   └── Product.java
     ├── controller/
     │   └── ProductController.java
-    └── repository/
-        └── ProductRepository.java
+    |── repository/
+    │   └── ProductController.java
+    └── service/
+        └── ProductService.java
 ```
 
 ## Database Schema
@@ -264,6 +217,8 @@ src/main/java/com/auca/restfulapi/
 ## Author
 
 Student ID: 26937
+<br>
+Name: Pacifique HARERIMANA
 
 ## Notes
 
