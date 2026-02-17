@@ -1,0 +1,484 @@
+================================================================================
+    SPRING BOOT REST API PROJECT - SETUP INSTRUCTIONS
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+This is a Spring Boot REST API project with 6 different APIs:
+1. Library Book Management API
+2. Student Registration API
+3. Restaurant Menu API
+4. E-Commerce Product API
+5. Task Management API
+6. User Profile API (Bonus)
+
+All APIs use PostgreSQL database for data storage.
+
+
+================================================================================
+STEP 1: PREREQUISITES
+================================================================================
+
+Before running this project, make sure you have installed:
+
+1. Java Development Kit (JDK) 17 or higher
+   - Download from: https://www.oracle.com/java/technologies/downloads/
+   - Verify installation: Open Command Prompt and type: java -version
+
+2. Maven 3.6 or higher
+   - Download from: https://maven.apache.org/download.cgi
+   - Verify installation: Open Command Prompt and type: mvn -version
+
+3. PostgreSQL Database
+   - Download from: https://www.postgresql.org/download/
+   - During installation, remember your postgres user password!
+
+4. Postman (for testing APIs)
+   - Download from: https://www.postman.com/downloads/
+
+
+================================================================================
+STEP 2: DATABASE SETUP
+================================================================================
+
+1. Open pgAdmin 
+
+2. Connect to PostgreSQL server using your postgres password
+
+3. Create a new database:
+   - Right-click on "Databases" → Create → Database
+   - Database name: ecommerce_db
+   - Click "Save"
+
+   OR use SQL Query:
+   - Open Query Tool
+   - Run this command:
+     CREATE DATABASE ecommerce_db;
+
+
+================================================================================
+STEP 3: CONFIGURE DATABASE CONNECTION
+================================================================================
+
+1. Navigate to: src/main/resources/application.properties
+
+2. Update the database password to match YOUR PostgreSQL password:
+
+   spring.datasource.password=YOUR_POSTGRES_PASSWORD_HERE
+
+   Example:
+   If your postgres password is "admin123", change the line to:
+
+   spring.datasource.password=admin123
+
+3. Save the file
+
+NOTE: The application will automatically create all 6 tables when it starts:
+- books
+- students
+- menu_items
+- product
+- tasks
+- user_profiles
+
+
+================================================================================
+STEP 4: RUN THE APPLICATION
+================================================================================
+
+METHOD 1: Using Command Prompt
+-------------------------------
+1. Open Command Prompt
+2. Navigate to the project folder:
+   cd "path\to\APIs assignment"
+3. Run the command:
+   mvn spring-boot:run
+4. Wait for the message: "Started RestfulApiApplication"
+5. Application is now running on: http://localhost:8080
+
+METHOD 2: Using IDE (IntelliJ IDEA / Eclipse)
+----------------------------------------------
+1. Open the project in your IDE
+2. Find: src/main/java/com/auca/restfulapi/RestfulApiApplication.java
+3. Right-click on the file → Run 'RestfulApiApplication'
+4. Application is now running on: http://localhost:8080
+
+
+================================================================================
+STEP 5: TESTING WITH POSTMAN
+================================================================================
+
+BASIC POSTMAN USAGE
+-------------------
+1. Open Postman
+2. Create a new request
+3. Set the HTTP method (GET, POST, PUT, PATCH, DELETE)
+4. Enter the URL
+5. For POST/PUT requests:
+   - Click "Body" tab
+   - Select "raw"
+   - Select "JSON" from dropdown
+   - Enter JSON data
+   - Click "Send"
+
+
+================================================================================
+API ENDPOINTS - QUICK REFERENCE
+================================================================================
+
+1. LIBRARY BOOK MANAGEMENT API
+   Base URL: http://localhost:8080/api/books
+   
+   GET    /api/books                    - Get all books
+   GET    /api/books/{id}               - Get book by ID
+   GET    /api/books/search?title=...   - Search books by title
+   POST   /api/books                    - Add new book
+   DELETE /api/books/{id}               - Delete book
+
+   Sample POST body:
+   {
+     "title": "Clean Code",
+     "author": "Robert Martin",
+     "isbn": "978-0132350884",
+     "publicationYear": 2008
+   }
+
+
+2. STUDENT REGISTRATION API
+   Base URL: http://localhost:8080/api/students
+   
+   GET    /api/students                      - Get all students
+   GET    /api/students/{id}                 - Get student by ID
+   GET    /api/students/major/{major}        - Get by major
+   GET    /api/students/filter?gpa=3.5       - Filter by GPA
+   POST   /api/students                      - Register student
+   PUT    /api/students/{id}                 - Update student
+
+   Sample POST body:
+   {
+     "firstName": "Alice",
+     "lastName": "Johnson",
+     "email": "alice@example.com",
+     "major": "Computer Science",
+     "gpa": 3.7
+   }
+
+
+3. RESTAURANT MENU API
+   Base URL: http://localhost:8080/api/menu
+   
+   GET    /api/menu                          - Get all menu items
+   GET    /api/menu/{id}                     - Get item by ID
+   GET    /api/menu/category/{category}      - Get by category
+   GET    /api/menu/available?available=true - Get available items
+   GET    /api/menu/search?name=...          - Search by name
+   POST   /api/menu                          - Add menu item
+   PUT    /api/menu/{id}/availability        - Toggle availability
+   DELETE /api/menu/{id}                     - Delete item
+
+   Sample POST body:
+   {
+     "name": "Pizza Margherita",
+     "description": "Classic Italian pizza",
+     "price": 11.99,
+     "category": "Main Course",
+     "available": true
+   }
+
+
+4. E-COMMERCE PRODUCT API
+   Base URL: http://localhost:8080/api/products
+   
+   GET    /api/products                           - Get all products
+   GET    /api/products?page=0&limit=5            - Get with pagination
+   GET    /api/products/{id}                      - Get by ID
+   GET    /api/products/category/{category}       - Get by category
+   GET    /api/products/brand/{brand}             - Get by brand
+   GET    /api/products/search?keyword=...        - Search products
+   GET    /api/products/price-range?min=100&max=500 - Price range
+   GET    /api/products/in-stock                  - In-stock products
+   POST   /api/products                           - Add product
+   PUT    /api/products/{id}                      - Update product
+   PATCH  /api/products/{id}/stock?quantity=100   - Update stock
+   DELETE /api/products/{id}                      - Delete product
+
+   Sample POST body:
+   {
+     "name": "iPhone 15",
+     "description": "Latest Apple smartphone",
+     "price": 999.99,
+     "category": "Electronics",
+     "stockQuantity": 50,
+     "brand": "Apple"
+   }
+
+
+5. TASK MANAGEMENT API
+   Base URL: http://localhost:8080/api/tasks
+   
+   GET    /api/tasks                        - Get all tasks
+   GET    /api/tasks/{id}                   - Get by ID
+   GET    /api/tasks/status?completed=false - Get by status
+   GET    /api/tasks/priority/{priority}    - Get by priority (HIGH/MEDIUM/LOW)
+   POST   /api/tasks                        - Create task
+   PUT    /api/tasks/{id}                   - Update task
+   PATCH  /api/tasks/{id}/complete          - Mark as completed
+   DELETE /api/tasks/{id}                   - Delete task
+
+   Sample POST body:
+   {
+     "title": "Code review",
+     "description": "Review pull requests",
+     "completed": false,
+     "priority": "HIGH",
+     "dueDate": "2024-12-25"
+   }
+
+
+6. USER PROFILE API (BONUS)
+   Base URL: http://localhost:8080/api/users
+   
+   GET    /api/users                        - Get all users
+   GET    /api/users/{id}                   - Get by ID
+   GET    /api/users/username/{username}    - Get by username
+   GET    /api/users/country/{country}      - Get by country
+   GET    /api/users/age-range?min=20&max=30 - Get by age range
+   GET    /api/users/active?active=true     - Get active/inactive users
+   POST   /api/users                        - Create user
+   PUT    /api/users/{id}                   - Update user
+   PATCH  /api/users/{id}/activate          - Activate user
+   PATCH  /api/users/{id}/deactivate        - Deactivate user
+   DELETE /api/users/{id}                   - Delete user
+
+   Sample POST body:
+   {
+     "username": "john_doe",
+     "email": "john@example.com",
+     "fullName": "John Doe",
+     "age": 25,
+     "country": "USA",
+     "bio": "Software developer",
+     "active": true
+   }
+
+
+================================================================================
+STEP-BY-STEP POSTMAN TESTING EXAMPLE
+================================================================================
+
+EXAMPLE 1: Add a New Product (POST Request)
+--------------------------------------------
+1. Open Postman
+2. Click "New" → "HTTP Request"
+3. Set method to "POST" (dropdown on the left)
+4. Enter URL: http://localhost:8080/api/products
+5. Click "Body" tab (below URL bar)
+6. Select "raw" radio button
+7. Select "JSON" from the dropdown (right side)
+8. Paste this JSON (make sure to use straight quotes " not smart quotes "):
+   {
+     "name": "Samsung Galaxy S24",
+     "description": "Latest Samsung flagship phone",
+     "price": 899.99,
+     "category": "Electronics",
+     "stockQuantity": 30,
+     "brand": "Samsung"
+   }
+9. Click "Send" button
+10. Check response: Should get 201 Created status
+
+
+EXAMPLE 2: Get All Products (GET Request)
+------------------------------------------
+1. Create new request in Postman
+2. Set method to "GET"
+3. Enter URL: http://localhost:8080/api/products
+4. Click "Send"
+5. Check response: Should see list of all products with 200 OK status
+
+
+EXAMPLE 3: Search Products (GET with Query Parameter)
+------------------------------------------------------
+1. Create new request
+2. Set method to "GET"
+3. Enter URL: http://localhost:8080/api/products/search?keyword=samsung
+4. Click "Send"
+5. Check response: Should see products matching "samsung"
+
+
+EXAMPLE 4: Delete a Product (DELETE Request)
+---------------------------------------------
+1. Create new request
+2. Set method to "DELETE"
+3. Enter URL: http://localhost:8080/api/products/1
+   (Replace "1" with actual product ID)
+4. Click "Send"
+5. Check response: Should get 204 No Content status
+
+
+================================================================================
+COMMON ISSUES & SOLUTIONS
+================================================================================
+
+ISSUE 1: "Port 8080 is already in use"
+---------------------------------------
+Solution: Another application is using port 8080
+- Stop any other running applications on port 8080
+- Or change port in application.properties:
+  Add line: server.port=8081
+  Then use http://localhost:8081 instead
+
+
+ISSUE 2: "Could not connect to database"
+-----------------------------------------
+Solution: Check these:
+- Is PostgreSQL running? (Check pgAdmin)
+- Is database "ecommerce_db" created?
+- Is password correct in application.properties?
+- Is PostgreSQL running on port 5432? (default)
+
+
+ISSUE 3: "mvn command not found"
+---------------------------------
+Solution: Maven not in system PATH
+- Reinstall Maven and add to PATH
+- Or use IDE to run the application instead
+
+
+ISSUE 4: "JSON parse error" in Postman
+---------------------------------------
+Solution: Check your JSON syntax
+- Use straight quotes " not smart quotes " "
+- Don't forget commas between fields
+- Don't add comma after last field
+- Validate JSON at: https://jsonlint.com/
+
+
+ISSUE 5: Application starts but APIs return 404
+------------------------------------------------
+Solution: Check the URL
+- Make sure application is running (check console)
+- Verify URL starts with http://localhost:8080
+- Check endpoint path is correct (case-sensitive)
+
+
+ISSUE 6: "Duplicate entry" error
+---------------------------------
+Solution: Trying to add duplicate data
+- Each API has unique constraints:
+  * Books: title must be unique
+  * Students: email must be unique
+  * Menu Items: name must be unique
+  * Products: name must be unique
+  * Users: username must be unique
+- Use different values or delete existing data first
+
+
+================================================================================
+TESTING CHECKLIST
+================================================================================
+
+Test each API to make sure everything works:
+
+[ ] Library API
+    [ ] Add a book (POST)
+    [ ] Get all books (GET)
+    [ ] Search by title (GET)
+    [ ] Delete a book (DELETE)
+
+[ ] Student API
+    [ ] Register a student (POST)
+    [ ] Get all students (GET)
+    [ ] Filter by major (GET)
+    [ ] Filter by GPA (GET)
+
+[ ] Restaurant Menu API
+    [ ] Add menu item (POST)
+    [ ] Get all items (GET)
+    [ ] Filter by category (GET)
+    [ ] Toggle availability (PUT)
+
+[ ] E-Commerce Product API
+    [ ] Add product (POST)
+    [ ] Get all products (GET)
+    [ ] Search products (GET)
+    [ ] Filter by price range (GET)
+    [ ] Update stock (PATCH)
+
+[ ] Task Management API
+    [ ] Create task (POST)
+    [ ] Get all tasks (GET)
+    [ ] Filter by priority (GET)
+    [ ] Mark as completed (PATCH)
+
+[ ] User Profile API
+    [ ] Create user (POST)
+    [ ] Get all users (GET)
+    [ ] Filter by country (GET)
+    [ ] Activate/Deactivate user (PATCH)
+
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+
+1. All data is stored in PostgreSQL database
+2. Data persists even after restarting the application
+3. Tables are automatically created on first run
+4. If you want fresh tables, change in application.properties:
+   spring.jpa.hibernate.ddl-auto=create-drop
+   (This will delete all data on restart)
+
+5. Default database configuration:
+   - Host: localhost
+   - Port: 5432
+   - Database: ecommerce_db
+   - Username: postgres
+   - Password: (your postgres password)
+
+
+================================================================================
+NEED HELP?
+================================================================================
+
+If you encounter any issues:
+1. Check the console/terminal for error messages
+2. Verify all prerequisites are installed correctly
+3. Make sure PostgreSQL is running
+4. Check database connection settings
+5. Verify JSON syntax in Postman requests
+
+
+================================================================================
+PROJECT STRUCTURE
+================================================================================
+
+src/main/java/com/auca/restfulapi/
+├── RestfulApiApplication.java (Main Application)
+├── library/ (Book Management)
+├── student/ (Student Registration)
+├── restaurant/ (Menu Management)
+├── ecommerce/ (Product Management)
+├── task/ (Task Management)
+└── user/ (User Profile Management)
+
+Each module contains:
+- model/ (Entity classes)
+- controller/ (REST endpoints)
+- repository/ (Database operations)
+
+
+================================================================================
+GOOD LUCK!
+================================================================================
+
+The project is ready to run. Follow the steps above and you should have
+all 6 APIs working perfectly!
+
+If everything is set up correctly:
+1. Application starts without errors
+2. You can see "Started RestfulApiApplication" in console
+3. All Postman requests return proper responses
+4. Data is saved in PostgreSQL database
+
+Happy Testing! 🚀
