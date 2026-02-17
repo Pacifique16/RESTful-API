@@ -1,13 +1,14 @@
 package com.auca.restfulapi.ecommerce.service;
 
-import com.auca.restfulapi.ecommerce.model.Product;
-import com.auca.restfulapi.ecommerce.repository.ProductRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.auca.restfulapi.ecommerce.model.Product;
+import com.auca.restfulapi.ecommerce.repository.ProductRepository;
 
 @Service
 public class ProductService {
@@ -44,6 +45,10 @@ public class ProductService {
 
     public List<Product> getInStockProducts() {
         return productRepository.findByStockQuantityGreaterThan(0);
+    }
+
+    public List<Product> getProductsByPriceAndBrand(Double price, String brand) {
+        return productRepository.findByPriceAndBrand(price, brand);
     }
 
     public boolean productExists(String name) {

@@ -56,6 +56,16 @@ public class ProductController {
         return ResponseEntity.ok(productService.getInStockProducts());
     }
 
+    @GetMapping("/filter")
+    public ResponseEntity<List<Product>> getProductsByPriceAndBrand(
+            @RequestParam(required = false) Double price, 
+            @RequestParam(required = false) String brand) {
+        if (price == null || brand == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(productService.getProductsByPriceAndBrand(price, brand));
+    }
+
     @PostMapping
     public ResponseEntity<?> addProduct(@RequestBody Product product) {
         if (productService.productExists(product.getName())) {
