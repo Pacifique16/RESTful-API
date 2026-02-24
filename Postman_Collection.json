@@ -552,6 +552,119 @@
           }
         }
       ]
+    },
+    {
+      "name": "Location Hierarchy API",
+      "item": [
+        {
+          "name": "Get All Locations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/locations",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations"]
+            }
+          }
+        },
+        {
+          "name": "1. Save Province (Western)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"WP\",\n  \"name\": \"Western\",\n  \"type\": \"PROVINCE\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/locations/save",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "save"]
+            }
+          }
+        },
+        {
+          "name": "2. Save District (Rubavu)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"RBV\",\n  \"name\": \"Rubavu\",\n  \"type\": \"DISTRICT\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/locations/save?parentId=PROVINCE_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "save"],
+              "query": [{"key": "parentId", "value": "PROVINCE_UUID_HERE"}]
+            }
+          }
+        },
+        {
+          "name": "3. Save Sector (Gisenyi)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"GSN\",\n  \"name\": \"Gisenyi\",\n  \"type\": \"SECTOR\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/locations/save?parentId=DISTRICT_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "save"],
+              "query": [{"key": "parentId", "value": "DISTRICT_UUID_HERE"}]
+            }
+          }
+        },
+        {
+          "name": "4. Save Cell (Umuganda)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"UMG\",\n  \"name\": \"Umuganda\",\n  \"type\": \"CELL\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/locations/save?parentId=SECTOR_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "save"],
+              "query": [{"key": "parentId", "value": "SECTOR_UUID_HERE"}]
+            }
+          }
+        },
+        {
+          "name": "5. Save Village (Rebero)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"RBR\",\n  \"name\": \"Rebero\",\n  \"type\": \"VILLAGE\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/locations/save?parentId=CELL_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "save"],
+              "query": [{"key": "parentId", "value": "CELL_UUID_HERE"}]
+            }
+          }
+        }
+      ]
     }
   ]
 }
