@@ -48,21 +48,21 @@ public class LocationService {
 
     public String saveChirldAndParent(Location location, String parentId){
         
-        if(parentId != null){
+        if(parentId != null && !parentId.isEmpty()){
            Location parent = locationRep.findById(UUID.fromString(parentId)).orElse(null);
-           if(parent != null){
-               location.setParent(parent);
+           if(parent == null){
+               return "Parent location not found";
            }
+           location.setParent(parent);
         }
-             Boolean checkLocation = locationRep.existsByCode(location.getCode());
-                if(checkLocation){
-                    return "Location with that code already exists";
-                }else{
-                    Location saved = locationRep.save(location);
-                    return "Location saved successfully with ID: " + saved.getId();
-                }
         
-
+        Boolean checkLocation = locationRep.existsByCode(location.getCode());
+        if(checkLocation){
+            return "Location with that code already exists";
+        }
+        
+        Location saved = locationRep.save(location);
+        return "Location saved successfully with ID: " + saved.getId();
     }
 
 
