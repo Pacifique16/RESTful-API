@@ -65,5 +65,13 @@ public class LocationService {
         return "Location saved successfully with ID: " + saved.getId();
     }
 
+    public void updateLocation(Location location){
+        locationRep.save(location);
+    }
+
+    public void deleteLocation(UUID id){
+        locationRep.deleteById(id);
+    }
+
 
 }
