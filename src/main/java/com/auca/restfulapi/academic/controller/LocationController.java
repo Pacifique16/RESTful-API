@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+import com.auca.restfulapi.academic.model.ELocationType;
 import com.auca.restfulapi.academic.model.Location;
 import com.auca.restfulapi.academic.service.LocationService;
 
@@ -40,6 +41,11 @@ public class LocationController {
             return new ResponseEntity<>(location, HttpStatus.OK);
         }
         return new ResponseEntity<>("Location not found", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Location>> getLocationsByType(@PathVariable ELocationType type){
+        return new ResponseEntity<>(locationService.getLocationsByType(type), HttpStatus.OK);
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
