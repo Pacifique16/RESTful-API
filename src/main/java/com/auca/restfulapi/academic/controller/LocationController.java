@@ -48,6 +48,11 @@ public class LocationController {
         return new ResponseEntity<>(locationService.getLocationsByType(type), HttpStatus.OK);
     }
 
+    @GetMapping("/children/{parentId}")
+    public ResponseEntity<List<Location>> getChildLocations(@PathVariable UUID parentId){
+        return new ResponseEntity<>(locationService.getChildLocations(parentId), HttpStatus.OK);
+    }
+
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> saveLocation(@RequestBody Location location, @RequestParam(required = false) String parentId){
         try {
