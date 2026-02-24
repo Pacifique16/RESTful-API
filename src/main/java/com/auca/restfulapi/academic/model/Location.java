@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,6 +15,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Entity representing a hierarchical location structure
+ * Supports: Province -> District -> Sector -> Cell -> Village
+ */
 @Entity
 @Table(name="location")
 public class Location {
@@ -23,8 +28,10 @@ public class Location {
     @GeneratedValue(strategy =  GenerationType.UUID)
     private UUID id;
 
+    @Column(unique = true, nullable = false)
     private String code;
 
+    @Column(nullable = false)
     private String name;
 
     @Enumerated(EnumType.STRING)
