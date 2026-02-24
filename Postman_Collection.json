@@ -571,6 +571,48 @@
           }
         },
         {
+          "name": "Get Location by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/locations/LOCATION_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "LOCATION_UUID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "Get Locations by Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/locations/type/PROVINCE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "type", "PROVINCE"]
+            }
+          }
+        },
+        {
+          "name": "Get Child Locations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/locations/children/PARENT_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "children", "PARENT_UUID_HERE"]
+            }
+          }
+        },
+        {
           "name": "1. Save Province (Western)",
           "request": {
             "method": "POST",
@@ -661,6 +703,38 @@
               "port": "8080",
               "path": ["api", "locations", "save"],
               "query": [{"key": "parentId", "value": "CELL_UUID_HERE"}]
+            }
+          }
+        },
+        {
+          "name": "Update Location",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"RBR\",\n  \"name\": \"Rebero Updated\",\n  \"type\": \"VILLAGE\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/locations/LOCATION_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "LOCATION_UUID_HERE"]
+            }
+          }
+        },
+        {
+          "name": "Delete Location",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/locations/LOCATION_UUID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "locations", "LOCATION_UUID_HERE"]
             }
           }
         }
