@@ -1,15 +1,22 @@
-# E-Commerce Product API
+# Spring Boot RESTful API Assignment
 
-A RESTful API built with Spring Boot for managing e-commerce products with PostgreSQL database integration.
+A comprehensive RESTful API built with Spring Boot featuring e-commerce product management and hierarchical location management with PostgreSQL database integration.
 
 ## Features
 
+### E-Commerce Product API
 - Complete CRUD operations for products
 - Search and filter products by category, brand, price range
 - Pagination support
 - Stock management
 - Duplicate product validation
-- PostgreSQL database persistence
+
+### Location Hierarchy API
+- Hierarchical location management (Province → District → Sector → Cell → Village)
+- Parent-child relationship tracking
+- Query locations by type
+- Get child locations
+- Complete CRUD operations
 
 ## Technologies Used
 
@@ -47,6 +54,8 @@ mvn spring-boot:run
 Application runs on: `http://localhost:8080`
 
 ## API Endpoints
+
+## E-Commerce Product API
 
 ### 1. Get All Products
 **GET** `/api/products`
@@ -175,6 +184,37 @@ http://localhost:8080/api/products/1
 
 <img width="1762" height="743" alt="delete product" src="https://github.com/user-attachments/assets/b231ba27-9d5e-4f71-9ea8-2bf8f53645ea" />
 
+## Location Hierarchy API
+
+### 1. Get All Locations
+**GET** `/api/locations`
+
+### 2. Get Location by ID
+**GET** `/api/locations/{id}`
+
+### 3. Get Locations by Type
+**GET** `/api/locations/type/{type}`
+- Types: PROVINCE, DISTRICT, SECTOR, CELL, VILLAGE
+
+### 4. Get Child Locations
+**GET** `/api/locations/children/{parentId}`
+
+### 5. Save Location
+**POST** `/api/locations/save?parentId={parentId}`
+```json
+{
+  "code": "WP",
+  "name": "Western",
+  "type": "PROVINCE"
+}
+```
+
+### 6. Update Location
+**PUT** `/api/locations/{id}`
+
+### 7. Delete Location
+**DELETE** `/api/locations/{id}`
+
 
 
 ## HTTP Status Codes
@@ -189,15 +229,25 @@ http://localhost:8080/api/products/1
 
 ```
 src/main/java/com/auca/restfulapi/
-└── ecommerce/
+├── ecommerce/
+│   ├── model/
+│   │   └── Product.java
+│   ├── controller/
+│   │   └── ProductController.java
+│   ├── repository/
+│   │   └── ProductRepository.java
+│   └── service/
+│       └── ProductService.java
+└── academic/
     ├── model/
-    │   └── Product.java
+    │   ├── Location.java
+    │   └── ELocationType.java
     ├── controller/
-    │   └── ProductController.java
-    |── repository/
-    │   └── ProductController.java
+    │   └── LocationController.java
+    ├── repository/
+    │   └── LocationRepository.java
     └── service/
-        └── ProductService.java
+        └── LocationService.java
 ```
 
 ## Database Schema
@@ -213,6 +263,16 @@ src/main/java/com/auca/restfulapi/
 | category | VARCHAR | |
 | stock_quantity | INTEGER | |
 | brand | VARCHAR | |
+
+**Table:** `location`
+
+| Column | Type | Constraints |
+|--------|------|-------------|
+| id | UUID | PRIMARY KEY |
+| code | VARCHAR | NOT NULL, UNIQUE |
+| name | VARCHAR | NOT NULL |
+| type | VARCHAR | ENUM (PROVINCE, DISTRICT, SECTOR, CELL, VILLAGE) |
+| parent_id | UUID | FOREIGN KEY → location(id) |
 
 ## Author
 
